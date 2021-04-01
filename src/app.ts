@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
 import txRouter from "./routes/txRoutes";
 
 const app: Application = express();
