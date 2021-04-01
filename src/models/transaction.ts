@@ -1,6 +1,6 @@
 import { Model, model, Schema, Document } from "mongoose";
 
-interface ITx extends Document {
+export interface ITx extends Document {
   id: string,
   txid: string,
   address: string,
