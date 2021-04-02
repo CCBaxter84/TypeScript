@@ -1,10 +1,14 @@
-import './App.css';
+import { FC } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Container from "./components/Container";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      Your mom
-    </div>
+    <>
+      <Header />
+      <Container />
+    </>
   );
 }
 

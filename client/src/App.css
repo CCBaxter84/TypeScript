@@ -1,0 +1,54 @@
+@import "./variables.css";
+
+body {
+  background-color: var(--saltMidight);
+  color: seashell;
+}
+
+header {
+  margin: 20px 0 0 50px;
+}
+
+.salt-logo {
+  width: 100px;
+  height: 20px;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px;
+}
+
+.btn {
+  background-color: var(--saltMidight);
+  border: 1px solid seashell;
+  color: seashell;
+  padding: 5px;
+  margin: 5px;
+}
+
+.highlight {
+  background-color: var(--saltAqua);
+  color: var(--saltMidight);
+  border: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.outer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
+.inner {
+  background-color: var(--saltMidight);
+  border: 1px solid seashell;
+  color: seashell;
+}
