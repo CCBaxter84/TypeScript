@@ -11,7 +11,7 @@
   background-color: var(--saltMidight);
   border: 1px solid seashell;
   color: seashell;
-  padding: 30px;
+  padding: 30px 50px;
 }
 
 .form-label {
@@ -36,4 +36,9 @@
 
 .spent-btns > button {
   flex-grow: 1;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
 }

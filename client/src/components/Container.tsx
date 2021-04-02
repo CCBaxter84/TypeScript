@@ -33,7 +33,6 @@ const Container: FC = () => {
       resetState={resetState}
       address={address} spent={spent}
     />
-
   );
 }
 
