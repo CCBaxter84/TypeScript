@@ -19,12 +19,16 @@ const ControllerBtns: FC<IProps> = ({ resetState }) => {
   return (
     <section className="controller-btns">
       <Link to="/full">
-        <Button name="full" fullName="Full Balance"
+        <Button
+          className={`btn ${highlighted === "full" && "highlight"}`}
+          name="full" fullName="Full Balance"
           handleClick={handleClick} highlighted={highlighted}
         />
       </Link>
       <Link to="/spent">
-        <Button name="spent" fullName="Spent / Unspent"
+        <Button
+          className={`btn ${highlighted === "spent" && "highlight"}`}
+          name="spent" fullName="Spent / Unspent"
           handleClick={handleClick} highlighted={highlighted}
         />
       </Link>

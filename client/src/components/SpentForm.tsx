@@ -10,7 +10,10 @@ const SpentForm: FC<ISpentForm> = ({ address, handleSubmit, handleChange, toggle
           type="text" name="address" value={address} onChange={handleChange} className="input-box"
         />
       </label>
-      <SpentBtns toggleSpent={toggleSpent}/>
+      <label>Do you want your spent or unspent balance?
+        <SpentBtns toggleSpent={toggleSpent}/>
+      </label>
+
     </form>
   );
 }

@@ -16,7 +16,8 @@ export interface IBtnProps {
   highlighted: string | null,
   handleClick: IClick,
   name: string,
-  fullName: string
+  fullName: string,
+  className: string
 }
 
 export interface IFormProps {

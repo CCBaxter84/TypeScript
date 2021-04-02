@@ -1,4 +1,5 @@
 @import "./variables.css";
+@import "./formStyles.css";
 
 body {
   background-color: var(--saltMidight);
@@ -45,34 +46,3 @@ main {
   cursor: pointer;
 }
 
-.outer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-}
-
-.inner {
-  background-color: var(--saltMidight);
-  border: 1px solid seashell;
-  color: seashell;
-  padding: 30px;
-}
-
-.form-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-box {
-  background-color: var(--saltMidight);
-  border: 1px solid seashell;
-  border-radius: 3px;
-  color: seashell;
-  margin: 10px 0;
-  padding: 10px;
-}
-
-#unspent {
-  margin-left: 10px;
-}

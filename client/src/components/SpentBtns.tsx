@@ -18,10 +18,14 @@ const SpentBtns: FC<IProps> = ({ toggleSpent }) => {
 
   return (
     <section className="spent-btns">
-      <Button name="spent" fullName="Spent"
+      <Button
+        className={`btn ${highlighted === "spent" && "highlight"}`}
+        name="spent" fullName="Spent"
         handleClick={handleClick} highlighted={highlighted}
       />
-      <Button name="unspent" fullName="Unspent"
+      <Button
+        className={`btn ${highlighted === "unspent" && "highlight"}`}
+        name="unspent" fullName="Unspent"
         handleClick={handleClick} highlighted={highlighted}
       />
     </section>
