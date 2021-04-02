@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { IClick } from "./interfaces";
+import Button from './Button';
 
 const ControllerBtns: FC = () => {
   const [ highlighted, setHighlighted ] = useState<string | null>(null);
@@ -11,22 +12,16 @@ const ControllerBtns: FC = () => {
   }
 
   return (
-    <section className="btns">
+    <section className="controller-btns">
       <Link to="/full">
-        <button
-          className={`btn ${highlighted === "full" && "highlight"}`}
-          name="full"
-          onClick={handleClick}
-        >Full Balance
-        </button>
+        <Button name="full" fullName="Full Balance"
+          handleClick={handleClick} highlighted={highlighted}
+        />
       </Link>
       <Link to="/spent">
-        <button
-          className={`btn ${highlighted === "spent" && "highlight"}`}
-          name="spent"
-          onClick={handleClick}
-        >Spent/Unspent
-        </button>
+        <Button name="spent" fullName="Spent / Unspent"
+          handleClick={handleClick} highlighted={highlighted}
+        />
       </Link>
     </section>
   );
