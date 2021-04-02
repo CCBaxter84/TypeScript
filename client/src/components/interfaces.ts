@@ -15,11 +15,6 @@ export interface IBtnProps {
   fullName: string
 }
 
-export interface IFormCtrProps {
-  wantsFull: boolean,
-  name: string
-}
-
 export interface IFormProps {
   address: string,
   handleSubmit: IHandler,
@@ -27,7 +22,16 @@ export interface IFormProps {
 
 }
 
+export interface IToggler {
+  (isSpent: boolean): void
+}
+
 export interface ISpentForm extends IFormProps {
-  handleToggle: IHandler,
-  spent: boolean
+  toggleSpent: IToggler,
+  spent: boolean | null
+}
+
+export interface IFormCtrProps extends ISpentForm {
+  wantsFull: boolean,
+  name: string
 }

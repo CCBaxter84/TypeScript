@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import { IClick } from "./interfaces";
 import Button from './Button';
 
-const ControllerBtns: FC = () => {
+interface IProps {
+  resetState: () => void
+}
+
+const ControllerBtns: FC<IProps> = ({ resetState }) => {
   const [ highlighted, setHighlighted ] = useState<string | null>(null);
 
   const handleClick: IClick = event => {
     const { name } = event.currentTarget;
     setHighlighted(name);
+    resetState();
   }
 
   return (

@@ -1,26 +1,9 @@
-import { FC, useState } from "react";
-import { IHandler, IFormCtrProps } from "./interfaces";
+import { FC } from "react";
+import { IFormCtrProps } from "./interfaces";
 import WalletForm from "./WalletForm";
 import SpentForm from "./SpentForm";
 
-const FormContainer: FC<IFormCtrProps> = ({ wantsFull, name }) => {
-  const [ address, setAddress ] = useState<string>("");
-  const [ spent, setSpent ] = useState<boolean>(false);
-
-  const handleChange: IHandler = event => {
-    const { value } = event.currentTarget;
-    setAddress(value);
-  }
-
-  const handleSubmit: IHandler = event => {
-    event.preventDefault();
-  }
-
-  const handleToggle: IHandler = event => {
-    const { value } = event.currentTarget;
-    const spentOrUnspent = value === "spent" ? true : false;
-    setSpent(spentOrUnspent);
-  }
+const FormContainer: FC<IFormCtrProps> = ({ handleChange, handleSubmit, toggleSpent, address, spent, wantsFull, name }) => {
 
   return (
     <section className="outer">
@@ -34,7 +17,7 @@ const FormContainer: FC<IFormCtrProps> = ({ wantsFull, name }) => {
         <SpentForm address={address}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          handleToggle={handleToggle}
+          toggleSpent={toggleSpent}
           spent={spent}
         />
         }

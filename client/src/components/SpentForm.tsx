@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { ISpentForm } from "./interfaces";
+import SpentBtns from './SpentBtns';
 
-const SpentForm: FC<ISpentForm> = ({ address, handleSubmit, handleChange, handleToggle }) => {
+const SpentForm: FC<ISpentForm> = ({ address, handleSubmit, handleChange, toggleSpent }) => {
   return (
     <form onSubmit={handleSubmit}>
       <label className="form-label">What is your Bitcoin Wallet Address?
@@ -9,14 +10,7 @@ const SpentForm: FC<ISpentForm> = ({ address, handleSubmit, handleChange, handle
           type="text" name="address" value={address} onChange={handleChange} className="input-box"
         />
       </label>
-      <input type="radio" value="spent" id="spent"
-        onChange={handleToggle}/>
-      <label className="radio-label"
-        htmlFor="spent">Spent</label>
-      <input type="radio" value="unspent" id="unspent"
-        onChange={handleToggle}/>
-      <label className="radio-label"
-        htmlFor="unspent">Unspent</label>
+      <SpentBtns toggleSpent={toggleSpent}/>
     </form>
   );
 }
