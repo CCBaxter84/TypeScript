@@ -8,6 +8,10 @@ export interface IHandler {
   (event: FormEvent<HTMLFormElement | HTMLInputElement>): void
 }
 
+export interface IToggler {
+  (isSpent: boolean): void
+}
+
 export interface IBtnProps {
   highlighted: string | null,
   handleClick: IClick,
@@ -19,16 +23,15 @@ export interface IFormProps {
   address: string,
   handleSubmit: IHandler,
   handleChange: IHandler
-
-}
-
-export interface IToggler {
-  (isSpent: boolean): void
 }
 
 export interface ISpentForm extends IFormProps {
   toggleSpent: IToggler,
   spent: boolean | null
+}
+
+export interface ICtrLayout extends ISpentForm {
+  resetState: () => void
 }
 
 export interface IFormCtrProps extends ISpentForm {
