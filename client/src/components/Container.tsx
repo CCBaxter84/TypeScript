@@ -9,10 +9,6 @@ const Container: FC = () => {
   const [ balance, setBalance ] = useState<number>(0);
   const [ error, setError ] = useState<string>("");
 
-  useEffect(() => {
-
-  }, [balance]);
-
   const handleChange: IHandler = event => {
     const { value } = event.currentTarget;
     setAddress(value);
