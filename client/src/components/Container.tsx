@@ -1,26 +1,34 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { IHandler, IToggler } from "./interfaces";
 import { getFullBalance, getSpentBalance } from "./fetchFunctions";
 import ContainerLayout from "./ContainerLayout";
 
 const Container: FC = () => {
-  const [ address, setAddress ] = useState<string>("");
+  const [ address, setAddress ] = useState<string>("1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPx");
   const [ spent, setSpent ] = useState<boolean | null>(null);
   const [ balance, setBalance ] = useState<number>(0);
+
+  useEffect(() => {
+    getFullBalance(address)
+      .then(balance => console.log(balance));
+  }, [balance]);
 
   const handleChange: IHandler = event => {
     const { value } = event.currentTarget;
     setAddress(value);
   }
 
-  const handleSubmit: IHandler = async (event) => {
+  const handleSubmit: IHandler = (event) => {
     event.preventDefault();
     if (spent === null) {
-      const balance = await getFullBalance(address);
-      setBalance(balance);
+      getFullBalance(address)
+        .then(balance => setBalance(balance))
+        .catch(error => console.log(error));
+
     } else {
-      const balance = await getSpentBalance(address, spent);
-      setBalance(balance);
+      getSpentBalance(address, spent)
+        .then(balance => setBalance(balance))
+        .catch(error => console.log(error));
     }
   }
 
