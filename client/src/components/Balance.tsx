@@ -7,7 +7,7 @@ interface IProps {
 const Balance: FC<IProps> = ({ balance }) => {
   return (
     <section className="inner2">
-      <p>Balance: </p>
+      <p>Your Balance: </p>
       {balance !== null && <p className="desc">{balance}</p>}
     </section>
   );
