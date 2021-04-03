@@ -1,18 +1,18 @@
 import axios from "axios";
 
-export const getFullBalance = async (address: string) : Promise<number> => {
+export const getFullBalance = async (address: string) => {
   try {
-    const balance: number = await axios.get(`/utxos/${address}`);
-    return balance;
+    const res = await axios.get(`/utxos/${address}`);
+    return res.data.balance;
   } catch(error) {
     return error;
   }
 }
 
-export const getSpentBalance = async (address: string, spent: boolean) : Promise<number> => {
+export const getSpentBalance = async (address: string, spent: boolean) => {
   try {
-    const balance: number = await axios.get(`/utxos/${address}/${spent}`);
-    return balance;
+    const res = await axios.get(`/utxos/${address}/${spent}`);
+    return res.data.balance;
   } catch(error) {
     return error;
   }

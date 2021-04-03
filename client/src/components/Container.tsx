@@ -13,13 +13,13 @@ const Container: FC = () => {
     setAddress(value);
   }
 
-  const handleSubmit: IHandler = event => {
+  const handleSubmit: IHandler = async (event) => {
     event.preventDefault();
     if (spent === null) {
-      const balance = getFullBalance(address);
+      const balance = await getFullBalance(address);
       setBalance(balance);
     } else {
-      const balance = getSpentBalance(address, spent);
+      const balance = await getSpentBalance(address, spent);
       setBalance(balance);
     }
   }
