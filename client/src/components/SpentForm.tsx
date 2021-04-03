@@ -12,7 +12,7 @@ const SpentForm: FC<ISpentForm> = ({ data, handleSubmit, handleChange, toggleSpe
     <label>Do you want your spent or unspent balance?
       <SpentBtns toggleSpent={toggleSpent}/>
     </label>
-    <input type="submit" value="Submit"/>
+    <input className="btn submit-btn" type="submit" value="Submit"/>
   </form>
 );
 

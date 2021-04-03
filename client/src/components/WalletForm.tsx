@@ -8,6 +8,7 @@ const WalletForm: FC<IFormProps> = ({ data, handleSubmit, handleChange }) => (
         type="text" name="address" value={data.address} onChange={handleChange} className="input-box"
       />
     </label>
+    <input className="btn submit-btn" type="submit" value="Submit"/>
   </form>
 );
 

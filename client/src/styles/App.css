@@ -34,7 +34,7 @@ main {
   background-color: var(--saltMidight);
   border: 1px solid seashell;
   color: seashell;
-  padding: 5px;
+  padding: 10px;
 }
 
 .highlight {
