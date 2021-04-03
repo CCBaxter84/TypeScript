@@ -59,3 +59,12 @@ main {
   cursor: pointer;
 }
 
+.inner2 {
+  background-color: var(--saltAqua);
+  color: var(--saltMidight);
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 30px 50px;
+}
+

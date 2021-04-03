@@ -7,11 +7,16 @@
   margin: 50px;
 }
 
+.middle-ctr {
+  display: flex;
+  flex-direction: row;
+}
 .inner {
   background-color: var(--saltMidight);
   border: 1px solid seashell;
   color: seashell;
   padding: 30px 50px;
+  font-size: 14px;
 }
 
 form {

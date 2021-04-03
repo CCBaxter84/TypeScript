@@ -2,14 +2,14 @@
 export interface IState {
   address: string,
   spent: boolean | null,
-  balance: number,
+  balance: number | null,
   error: string
 }
 
 export const initialState: IState = {
   address: "",
   spent: null,
-  balance: 0,
+  balance: null,
   error: ""
 }
 
@@ -17,7 +17,7 @@ export const initialState: IState = {
 type Action =
   | { type: "ADDRESS", value: string }
   | { type: "ERROR", value: string }
-  | { type: "BALANCE", value: number }
+  | { type: "BALANCE", value: number | null }
   | { type: "SPENT", value: boolean | null }
 
 // Reducer
