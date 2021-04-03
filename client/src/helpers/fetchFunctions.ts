@@ -9,7 +9,7 @@ export const getFullBalance = async (address: string) => {
   }
 }
 
-export const getSpentBalance = async (address: string, spent: boolean) => {
+export const getSpentBalance = async (address: string, spent: boolean|null) => {
   try {
     const res = await axios.get(`http://localhost:5000//utxos/${address}/${spent}`);
     return { balance: res.data.balance };

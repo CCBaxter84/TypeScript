@@ -1,17 +1,16 @@
-import { FC, useState, useEffect } from "react";
-import { IHandler, IToggler } from "./interfaces";
-import { getFullBalance, getSpentBalance } from "./fetchFunctions";
+import { FC, useReducer } from "react";
+import { IHandler, IToggler } from "../helpers/interfaces";
+import { getFullBalance, getSpentBalance } from "../helpers/fetchFunctions";
+import { reducer, initialState } from "../helpers/reducer";
 import ContainerLayout from "./ContainerLayout";
 
 const Container: FC = () => {
-  const [ address, setAddress ] = useState<string>("1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPxA");
-  const [ spent, setSpent ] = useState<boolean | null>(null);
-  const [ balance, setBalance ] = useState<number>(0);
-  const [ error, setError ] = useState<string>("");
+  const [ state, dispatch ] = useReducer(reducer, initialState);
+  const { address, spent } = state;
 
   const handleChange: IHandler = event => {
     const { value } = event.currentTarget;
-    setAddress(value);
+    dispatch({ type: "ADDRESS", value: value });
   }
 
   const handleSubmit: IHandler = (event) => {
@@ -20,18 +19,18 @@ const Container: FC = () => {
       getFullBalance(address)
         .then(res => {
           if (res.balance) {
-            setBalance(res.balance);
+            dispatch({ type: "BALANCE", value: res.balance });
           } else {
-            setError(res.error);
+            dispatch({ type: "ERROR", value: res.error });
           }
         });
     } else {
       getSpentBalance(address, spent)
         .then(res => {
           if (res.balance) {
-            setBalance(res.balance);
+            dispatch({ type: "BALANCE", value: res.balance });
           } else {
-            setError(res.error);
+            dispatch({ type: "ERROR", value: res.error });
           }
         });
     }
@@ -39,12 +38,12 @@ const Container: FC = () => {
 
   const toggleSpent: IToggler = isSpent => {
     console.log('your mom');
-    setSpent(isSpent);
+    dispatch({ type: "SPENT", value: isSpent });
   }
 
   const resetState = () => {
-    setAddress("");
-    setSpent(null);
+    dispatch({ type: "ADDRESS", value: "" });
+    dispatch({ type: "SPENT", value: null });
   }
 
   return (
@@ -53,7 +52,7 @@ const Container: FC = () => {
       handleSubmit={handleSubmit}
       toggleSpent={toggleSpent}
       resetState={resetState}
-      address={address} spent={spent}
+      data={state}
     />
   );
 }

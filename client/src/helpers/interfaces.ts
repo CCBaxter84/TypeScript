@@ -1,4 +1,5 @@
 import { MouseEvent, FormEvent } from "react";
+import { IState } from "./reducer";
 
 export interface IClick {
   (event: MouseEvent<HTMLButtonElement>): void
@@ -21,14 +22,14 @@ export interface IBtnProps {
 }
 
 export interface IFormProps {
-  address: string,
   handleSubmit: IHandler,
-  handleChange: IHandler
+  handleChange: IHandler,
+  data: IState
 }
 
 export interface ISpentForm extends IFormProps {
   toggleSpent: IToggler,
-  spent: boolean | null
+  data: IState
 }
 
 export interface ICtrLayout extends ISpentForm {

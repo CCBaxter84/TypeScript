@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { IClick } from "./interfaces";
+import { IClick } from "../helpers/interfaces";
 import Button from './Button';
 
 interface IProps {

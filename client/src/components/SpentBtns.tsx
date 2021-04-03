@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { IClick, IToggler } from "./interfaces";
+import { IClick, IToggler } from "../helpers/interfaces";
 import Button from "./Button";
 
 interface IProps {
@@ -10,6 +10,7 @@ const SpentBtns: FC<IProps> = ({ toggleSpent }) => {
   const [ highlighted, setHighlighted ] = useState<string | null>(null);
 
   const handleClick: IClick = event => {
+    event.preventDefault();
     const { name } = event.currentTarget;
     setHighlighted(name);
     const isSpent = name === "spent";
