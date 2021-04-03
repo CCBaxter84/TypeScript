@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { IFormProps } from "../helpers/interfaces";
+import ErrorMessage from "./ErrorMessage";
 
 const WalletForm: FC<IFormProps> = ({ data, handleSubmit, handleChange }) => (
   <form onSubmit={handleSubmit}>
@@ -9,6 +10,7 @@ const WalletForm: FC<IFormProps> = ({ data, handleSubmit, handleChange }) => (
       />
     </label>
     <input className="btn submit-btn" type="submit" value="Submit"/>
+    <ErrorMessage error={data.error}/>
   </form>
 );
 

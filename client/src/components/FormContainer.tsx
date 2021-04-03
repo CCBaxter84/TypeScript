@@ -23,7 +23,6 @@ const FormContainer: FC<IFormCtrProps> = ({ handleChange, handleSubmit, toggleSp
       </section>
       <Balance balance={data.balance}/>
     </section>
-
   </section>
 );
 

@@ -36,6 +36,10 @@ main {
   font-size: 44px;
 }
 
+p {
+  text-align: center;
+}
+
 .controller-btns {
   display: flex;
   justify-content: space-between;
