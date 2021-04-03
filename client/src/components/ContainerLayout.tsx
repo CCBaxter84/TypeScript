@@ -7,6 +7,7 @@ import FormContainer from "./FormContainer";
 const ContainerLayout: FC<ICtrLayout> = ({
   resetState, handleChange, handleSubmit, toggleSpent, data }) => (
     <main>
+      <p className="desc">Check Your Bitcoin Balance</p>
       <ControllerBtns resetState={resetState}/>
       <Switch>
         <Route exact path="/full">
