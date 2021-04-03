@@ -4,13 +4,13 @@ import { getFullBalance, getSpentBalance } from "./fetchFunctions";
 import ContainerLayout from "./ContainerLayout";
 
 const Container: FC = () => {
-  const [ address, setAddress ] = useState<string>("1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPx");
+  const [ address, setAddress ] = useState<string>("1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPxA");
   const [ spent, setSpent ] = useState<boolean | null>(null);
   const [ balance, setBalance ] = useState<number>(0);
+  const [ error, setError ] = useState<string>("");
 
   useEffect(() => {
-    getFullBalance(address)
-      .then(balance => console.log(balance));
+
   }, [balance]);
 
   const handleChange: IHandler = event => {
@@ -22,13 +22,22 @@ const Container: FC = () => {
     event.preventDefault();
     if (spent === null) {
       getFullBalance(address)
-        .then(balance => setBalance(balance))
-        .catch(error => console.log(error));
-
+        .then(res => {
+          if (res.balance) {
+            setBalance(res.balance);
+          } else {
+            setError(res.error);
+          }
+        });
     } else {
       getSpentBalance(address, spent)
-        .then(balance => setBalance(balance))
-        .catch(error => console.log(error));
+        .then(res => {
+          if (res.balance) {
+            setBalance(res.balance);
+          } else {
+            setError(res.error);
+          }
+        });
     }
   }
 

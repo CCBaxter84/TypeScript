@@ -20,7 +20,7 @@ txRouter.get("/:address", async (req: Request, res: Response) => {
     }
     res.status(200).json({ balance: balance });
   } catch(error) {
-    res.status(500).send(error);
+    res.status(400).json({ msg: error });
   }
 });
 
@@ -50,7 +50,7 @@ txRouter.get("/:address/:spent", async (req: Request, res: Response) => {
     }
     res.status(200).json({ balance: balance });
   } catch(error) {
-    res.status(500).send(error);
+    res.status(400).send(error);
   }
 });
 
