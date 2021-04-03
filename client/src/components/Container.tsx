@@ -1,10 +1,12 @@
 import { FC, useState } from "react";
 import { IHandler, IToggler } from "./interfaces";
+import { getFullBalance, getSpentBalance } from "./fetchFunctions";
 import ContainerLayout from "./ContainerLayout";
 
 const Container: FC = () => {
   const [ address, setAddress ] = useState<string>("");
   const [ spent, setSpent ] = useState<boolean | null>(null);
+  const [ balance, setBalance ] = useState<number>(0);
 
   const handleChange: IHandler = event => {
     const { value } = event.currentTarget;
@@ -13,6 +15,13 @@ const Container: FC = () => {
 
   const handleSubmit: IHandler = event => {
     event.preventDefault();
+    if (spent === null) {
+      const balance = getFullBalance(address);
+      setBalance(balance);
+    } else {
+      const balance = getSpentBalance(address, spent);
+      setBalance(balance);
+    }
   }
 
   const toggleSpent: IToggler = isSpent => {
