@@ -16,22 +16,9 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 const chai_1 = require("chai");
 const supertest_1 = __importDefault(require("supertest"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const database_1 = require("./database");
-dotenv_1.default.config({ path: __dirname + "./.env" });
 describe("Test all requests to /utxos API", () => {
-    /*
-    // Set up and Tear down DB connection
-    beforeEach(async () => {
-      dbConnect();
-    });
-  
-    afterEach(async () => {
-      dbClose();
-    });*/
     // Test DB Connection
     it("Should connect and disconnect to MongoDB", () => __awaiter(void 0, void 0, void 0, function* () {
-        database_1.dbClose();
         mongoose_1.default.connection.on("disconnected", () => {
             chai_1.expect(mongoose_1.default.connection.readyState).to.equal(0);
         });
@@ -41,7 +28,6 @@ describe("Test all requests to /utxos API", () => {
         mongoose_1.default.connection.on("error", () => {
             chai_1.expect(mongoose_1.default.connection.readyState).to.equal(99);
         });
-        database_1.dbConnect();
     }));
     // Test getting all transactions for a given address
     describe("GET /:address", () => __awaiter(void 0, void 0, void 0, function* () {
@@ -54,8 +40,8 @@ describe("Test all requests to /utxos API", () => {
         it("Should return HTTP 400 error for invalid BTC address", () => __awaiter(void 0, void 0, void 0, function* () {
             const invalidAddress = "InvalidBTCWallet";
             const response = yield supertest_1.default(app_1.default).get(`/utxos/${invalidAddress}`);
-            console.log(response);
             chai_1.expect(response.status).to.equal(400);
+            chai_1.expect(response.body.msg).to.equal("no matching wallet");
         }));
         /*it("Should return Error message when provided no address", () => {
     

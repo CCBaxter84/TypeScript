@@ -22,7 +22,7 @@ txRouter.get("/:address", (req, res) => __awaiter(void 0, void 0, void 0, functi
         const address = req.params.address;
         const utxos = yield transaction_1.default.find({ address: address });
         if (utxos.length < 1)
-            throw new Error("no matching wallet");
+            throw ("no matching wallet");
         let balance = 0;
         for (let i = 0; i < utxos.length; i++) {
             let current = utxos[i];
