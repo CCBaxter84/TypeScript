@@ -8,7 +8,7 @@ txRouter.get("/:address", async (req: Request, res: Response) => {
   try {
     const address: string = req.params.address;
     const utxos: ITx[] = await Transaction.find({ address: address });
-    if (utxos.length < 1) throw "no matching wallet";
+    if (utxos.length < 1) throw new Error("no matching wallet");
     let balance: number = 0;
     for (let i = 0; i < utxos.length; i++) {
       let current = utxos[i];
@@ -20,7 +20,7 @@ txRouter.get("/:address", async (req: Request, res: Response) => {
     }
     res.status(200).json({ balance: balance });
   } catch(error) {
-    res.status(400).json({ msg: error });
+    res.status(400).send({ msg: error });
   }
 });
 
