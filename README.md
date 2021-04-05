@@ -1,7 +1,7 @@
-# Bitcoin Wallet Checker App
+# Bitcoin Wallet Checker
 
 ## Summary:
-This is a full stack application providing basic functionality for checking the full balance, credit balance, or debit balance of a Bitcoin Wallet.
+This is a full stack web application providing basic functionality for checking the full balance, credit balance, or debit balance of Bitcoin Wallets.
 
 The backend is coded in Express TypeScript, and the front end is coded is React TypeScript. This application utilizes a MongoDB database and programmatically interacts with the database via the Mongoose Object Document Mapper (ODM).
 
@@ -16,7 +16,7 @@ All client-side or "View" code can be found in the "client" directory.
 The server-side code expects two environment variables to be accessible:
 `process.env.mongoURI` and `process.env.PORT`
 
-The code will default to running port 5000 statically without the `PORT` environment variable. However, the `mongoURI' variable must be provided to connect to the MongoDB database.
+The code will default to running port 5000 statically without the `PORT` environment variable. However, the `mongoURI` variable must be provided to connect to the MongoDB database.
 
 ## Available Scripts:
 All scripts must be run from the project root directory.
