@@ -31,11 +31,11 @@ describe("Test all requests to /utxos API", () => {
     }));
     // Test getting all transactions for a given address
     describe("GET /:address", () => __awaiter(void 0, void 0, void 0, function* () {
-        it("Should return list of utxos for a valid BTC address", () => __awaiter(void 0, void 0, void 0, function* () {
+        it("Should return correct balance of utxos for a valid BTC address", () => __awaiter(void 0, void 0, void 0, function* () {
             const validAddress = "1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPxAn";
             const response = yield supertest_1.default(app_1.default).get(`/utxos/${validAddress}`);
             chai_1.expect(response.status).to.equal(200);
-            chai_1.expect(response.body.balance).to.equal(183722.2696013707);
+            chai_1.expect(response.body.balance).to.equal(183722.26960137064);
         }));
         it("Should return HTTP 400 error for invalid BTC address", () => __awaiter(void 0, void 0, void 0, function* () {
             const invalidAddress = "InvalidBTCWallet";
@@ -43,22 +43,32 @@ describe("Test all requests to /utxos API", () => {
             chai_1.expect(response.status).to.equal(400);
             chai_1.expect(response.body.msg).to.equal("no matching wallet");
         }));
-        /*it("Should return Error message when provided no address", () => {
-    
-        });*/
     }));
     // Test getting all spent or unspent transactions for a given address
-    /*describe("GET /:address/:spent", () => {
-      it("Should return 'no matching wallet' for invalid BTC address", () => {
-  
-      });
-  
-      it("Should return Error message when provided no address", () => {
-  
-      });
-  
-      it("Should return list of utxos for a valid BTC address", () => {
-  
-      });
-    });*/
+    describe("GET /:address/:spent", () => {
+        it("Should return 'no matching wallet' for invalid BTC address", () => __awaiter(void 0, void 0, void 0, function* () {
+            const invalidAddress = "InvalidBTCWallet";
+            const response = yield supertest_1.default(app_1.default).get(`/utxos/${invalidAddress}/true`);
+            chai_1.expect(response.status).to.equal(400);
+            chai_1.expect(response.body.msg).to.equal("no matching wallet");
+        }));
+        it("Should return Error message when provided non-boolean input for spent", () => __awaiter(void 0, void 0, void 0, function* () {
+            const invalidAddress = "InvalidBTCWallet";
+            const response = yield supertest_1.default(app_1.default).get(`/utxos/${invalidAddress}/null`);
+            chai_1.expect(response.status).to.equal(400);
+            chai_1.expect(response.body.msg).to.equal("Invalid spent value");
+        }));
+        it("Should return correct balance for a valid BTC address and when spent is true", () => __awaiter(void 0, void 0, void 0, function* () {
+            const validAddress = "1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPxAn";
+            const response = yield supertest_1.default(app_1.default).get(`/utxos/${validAddress}/true`);
+            chai_1.expect(response.status).to.equal(200);
+            chai_1.expect(response.body.balance).to.equal(129.31132750999998);
+        }));
+        it("Should return correct balance for a valid BTC address and when spent is false", () => __awaiter(void 0, void 0, void 0, function* () {
+            const validAddress = "1CL5TbB2MaR4mrFjtYQ5GyA3cP2bSmPxAn";
+            const response = yield supertest_1.default(app_1.default).get(`/utxos/${validAddress}/false`);
+            chai_1.expect(response.status).to.equal(200);
+            chai_1.expect(response.body.balance).to.equal(183851.58092888066);
+        }));
+    });
 });
