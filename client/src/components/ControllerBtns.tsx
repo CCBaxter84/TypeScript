@@ -1,18 +1,26 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IClick } from "../helpers/interfaces";
+import { IClick, IReset } from "../helpers/interfaces";
 import Button from './Button';
 
 interface IProps {
-  resetState: () => void
+  resetState: IReset
 }
 
 const ControllerBtns: FC<IProps> = ({ resetState }) => {
   const [ highlighted, setHighlighted ] = useState<string | null>(null);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === "/full") {
+      setHighlighted("full");
+    } else if (pathname === "/spent") {
+      setHighlighted("spent");
+    }
+  }, [pathname]);
 
   const handleClick: IClick = event => {
-    const { name } = event.currentTarget;
-    setHighlighted(name);
     resetState();
   }
 

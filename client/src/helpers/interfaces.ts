@@ -10,7 +10,11 @@ export interface IHandler {
 }
 
 export interface IToggler {
-  (isSpent: boolean): void
+  (fullOrSpent: boolean | null): void
+}
+
+export interface IReset {
+  (): void
 }
 
 export interface IBtnProps {
@@ -33,7 +37,7 @@ export interface ISpentForm extends IFormProps {
 }
 
 export interface ICtrLayout extends ISpentForm {
-  resetState: () => void
+  resetState: IReset
 }
 
 export interface IFormCtrProps extends ISpentForm {

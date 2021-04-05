@@ -3,14 +3,16 @@ export interface IState {
   address: string,
   spent: boolean | null,
   balance: number | null,
-  error: string
+  error: string,
+  fullOrSpent: boolean | null
 }
 
 export const initialState: IState = {
   address: "",
   spent: null,
   balance: null,
-  error: ""
+  error: "",
+  fullOrSpent: null
 }
 
 // Action Interfaces
@@ -19,6 +21,7 @@ type Action =
   | { type: "ERROR", value: string }
   | { type: "BALANCE", value: number | null }
   | { type: "SPENT", value: boolean | null }
+  | { type: "FULLORSPENT", value: boolean | null }
 
 // Reducer
 export const reducer = (state: IState, action: Action): IState => {
@@ -31,6 +34,8 @@ export const reducer = (state: IState, action: Action): IState => {
       return { ...state, spent: action.value }
     case "BALANCE":
       return { ...state, balance: action.value }
+    case "FULLORSPENT":
+      return { ...state, fullOrSpent: action.value }
     default:
       return state;
   }
