@@ -36,7 +36,7 @@ txRouter.get("/:address", async (req: Request, res: Response) => {
 txRouter.get("/:address/:spent", async (req: Request, res: Response) => {
   try {
     // Guard clause for invalid spent
-    const { spent } = req.params;
+    const spent: string = req.params.spent;
     const options: string[] = [ "true", "false" ];
     if (!options.includes(spent)) throw "Invalid spent value";
 

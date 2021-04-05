@@ -44,7 +44,6 @@ const Container: FC = () => {
     }
   }
   const toggleSpent: IToggler = isSpent => {
-    console.log('your mom');
     dispatch({ type: "SPENT", value: isSpent });
   }
   const resetState = () => {
