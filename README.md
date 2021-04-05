@@ -12,6 +12,12 @@ All "Model" and "Controller" TypeScript code can be found in the "src" directory
 
 All client-side or "View" code can be found in the "client" directory.
 
+## Environment Variables:
+The server-side code expects two environment variables to be accessible:
+`process.env.mongoURI` and `process.env.PORT`
+
+The code will default to running port 5000 statically without the `PORT` environment variable. However, the `mongoURI' variable must be provided to connect to the MongoDB database.
+
 ## Available Scripts:
 All scripts must be run from the project root directory.
 
